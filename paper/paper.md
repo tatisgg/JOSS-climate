@@ -19,9 +19,21 @@ bibliography: paper.bib
 
 # Summary
 
-The Experiment Factory [@vanessa_sochat_2017_1059119] is Open Source software that makes it easy to generate reproducible behavioral experiments. It offers a browsable, and tested [library](https://expfactory.github.io/experiments/) of experiments, games, and surveys, support for multiple kinds of databases, and [robust documentation](https://expfactory.github.io/expfactory/) for the provided tools. A user interested in deploying a behavioral assessment can simply select a grouping of paradigms from the web interface, and build a container to serve them.
+Climate-OnSSET reformulates the logic of geospatial electrification planning under conditions of climate stress. The conventional OnSSET framework is fundamentally structured around techno-economic efficiency: settlements are prioritized according to least-cost principles, and electrification pathways emerge from minimizing the levelized cost of electricity (LCOE) across competing technologies. In such a formulation, the dominant planning question becomes how universal access can be achieved at minimum aggregate cost.
 
-![img/portal.png](img/portal.png)
+The Climate-OnSSET extension challenges this premise by introducing climate-sensitive prioritization into the sequencing logic of electrification. Rather than treating electrification exclusively as a cost-optimization problem, the framework interprets electricity access as a component of adaptive capacity and socio-technical resilience. The central idea is therefore not to replace least-cost planning, but to subordinate it to a broader planning rationale in which vulnerable populations exposed to climate hazards may be prioritized even when they are not the most economically attractive settlements to electrify.
+
+Methodologically, the extension preserves the internal techno-economic architecture of OnSSET. The model continues to calculate settlement-level LCOEs for grid extension, solar mini-grids, and stand-alone systems, and technology assignment remains governed by conventional least-cost comparisons. In this sense, Climate-OnSSET does not alter the engineering logic of infrastructure selection. What it modifies is the spatial sequencing and motives of prioritization.
+
+The framework introduces a Climate Priority Indicator constructed from two dimensions:
+
+\[
+ClimatePriority_i = Hazard_i \times Vulnerability_i
+\]
+
+where hazard reflects the spatial distribution of climate-related stressors such as droughts and heatwaves, and vulnerability captures limited adaptive capacity through indicators such as remoteness and relative deprivation.
+
+Exposure is intentionally excluded from the indicator because population is already embedded endogenously within OnSSET through settlement demand, clustering, and population-based electrification targets. Including exposure again would therefore reproduce a structural double-counting of population and reinforce the tendency of least-cost models to privilege large urban settlements.
 
 
 # Challenges with Behavioral Research
