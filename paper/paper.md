@@ -1,5 +1,5 @@
 ---
-title: 'OnSSET Climate Extension: Climate-risk-informed prioritization for spatial electrification planning'
+title: 'Climate-OnSSET: Climate-risk prioritization for spatial electrification planning'
 tags:
   - Python
   - electrification planning
