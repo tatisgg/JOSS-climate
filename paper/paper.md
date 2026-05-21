@@ -53,6 +53,8 @@ The OnSSET climate extension contributes to this field by preserving the settlem
 
 The extension is designed as an additive preprocessing and prioritization layer around baseline OnSSET. The main climate workflow is implemented in `onsset/climate_algorithm.py`, with hazard-specific calculations implemented in `onsset/climate_calculations/heatwave_calculation.py` and `onsset/climate_calculations/drought_calculation.py`. The climate pipeline is invoked from `runner.scenario(...)` when both a climate-data folder and an administrative-boundary shapefile are supplied. If these inputs are not supplied, the standard OnSSET scenario workflow is preserved.
 
+![OnSSET workflow including the climate-priority extension.](img/Climate_OnSSET_Workflow.png)
+
 The climate preprocessing workflow first loads user-supplied climate files and classifies them by temporal resolution and variable type. The current production path uses daily maximum temperature data for heatwave risk and monthly precipitation data for drought risk. Climate grid cells are spatially joined to admin-3 administrative regions, and hazard indicators are aggregated to these regions. Heatwave risk is estimated from the frequency of high-temperature days, while drought risk is estimated using a Standardized Precipitation Index (SPI) calculation [@mckee1993spi]. The two hazard scores are combined into a compound hazard using configurable weights.
 
 The compound hazard is then mapped back to settlements through an
@@ -71,6 +73,8 @@ $$
 $$
 
 Population is deliberately excluded from the priority score because OnSSET’s rollout rule already selects settlements until a cumulative population target is reached in each time step. Including population directly in the climate score would therefore double-count population in both ranking and selection. Instead, the climate priority score changes the order of settlements in the electrification queue, while the existing population target determines how many people are electrified in each period.
+
+![Commune-level mean climate indicators used to construct the climate-priority index. The panels show mean hazard, mean vulnerability, and mean climate priority across administrative units.](img/climate_priority_maps.png)
 
 The integration point with OnSSET is intentionally narrow. A new prioritization option, `prio_choice = 6`, is added to `SettlementProcessor.pre_selection` in `onsset.py`. Under this option, unelectrified settlements are ordered by descending `ClimatePriority`, after preserving existing OnSSET sorting rules for already electrified settlements and intensification. The standard OnSSET scenario loop then proceeds as before: demand is estimated, off-grid and grid options are evaluated, least-cost technologies are selected, and investment, capacity, and emissions summaries are produced. This design makes the effect of climate prioritization transparent and isolates it from unrelated techno-economic model components.
 
