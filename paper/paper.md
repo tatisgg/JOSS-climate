@@ -53,8 +53,6 @@ The OnSSET climate extension contributes to this field by preserving the settlem
 
 The extension is designed as an additive preprocessing and prioritization layer around baseline OnSSET. The main climate workflow is implemented in `onsset/climate_algorithm.py`, with hazard-specific calculations implemented in `onsset/climate_calculations/heatwave_calculation.py` and `onsset/climate_calculations/drought_calculation.py`. The climate pipeline is invoked from `runner.scenario(...)` when both a climate-data folder and an administrative-boundary shapefile are supplied. If these inputs are not supplied, the standard OnSSET scenario workflow is preserved.
 
-![OnSSET workflow including the climate-priority extension.](img/Climate_OnSSET_Workflow.png)
-
 The preprocessing workflow loads user-supplied climate files, classifies them by temporal resolution and variable type, and dispatches them to the relevant hazard calculation modules. The current implementation uses daily maximum temperature data for heatwave risk and monthly precipitation data for drought risk. Climate grid cells are spatially joined to admin-3 administrative units, and hazard indicators are aggregated to this level. Heatwave risk is estimated from the frequency of high-temperature days, while drought risk is estimated using a Standardized Precipitation Index (SPI) calculation [@mckee1993spi]. The two hazard scores are combined into a compound climate hazard using configurable weights.
 
 The compound hazard is then mapped back to settlements through the admin-3 spatial join. For each settlement, the extension computes:
@@ -82,6 +80,8 @@ The integration point with OnSSET is intentionally narrow. A new prioritization 
 The OnSSET climate extension allows users to run standard OnSSET scenarios with an additional climate-informed prioritization mode. Users provide the normal OnSSET inputs together with gridded climate data and an administrative-boundary shapefile. Climate data may come from sources such as Copernicus/ERA5 or other gridded climate datasets, provided the data are converted to tabular CSV or Excel format before being passed to the model.
 
 The climate loader classifies input files using filename hints that indicate temporal resolution and variable type. For example, daily temperature files can be used for heatwave calculations, while monthly precipitation files can be used for SPI-based drought calculations. The files must contain geographic coordinates and either a date field or year/month fields, together with the relevant temperature or precipitation variable. The administrative-boundary shapefile, recommended at admin-3 level, is used to aggregate gridded climate indicators to administrative units and then map the resulting hazard scores to settlements.
+
+![OnSSET workflow including the climate-priority extension.](img/Climate_OnSSET_Workflow.png)
 
 To activate climate-informed sequencing, users set `prio_choice = 6` in the scenario configuration and supply the climate-data folder and administrative-boundary shapefile when running `runner.scenario(...)`. The model then computes heatwave risk, drought risk, compound climate hazard, climate vulnerability, and `ClimatePriority` before running the standard OnSSET scenario loop. The electrification target for each time step remains unchanged, but settlements with higher climate priority are moved earlier in the electrification sequence.
 
