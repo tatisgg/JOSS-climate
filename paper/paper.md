@@ -77,7 +77,7 @@ The integration point with OnSSET is intentionally narrow. A new prioritization 
 
 # Functionality
 
-The OnSSET climate extension allows users to run standard OnSSET scenarios with an additional climate-informed prioritization mode. Users provide the normal OnSSET inputs together with gridded climate data and an administrative-boundary shapefile. Climate data may come from sources such as Copernicus/ERA5 or other gridded climate datasets, provided the data are converted to tabular CSV or Excel format before being passed to the model.
+The OnSSET climate extension allows users to run standard OnSSET scenarios with an additional climate-informed prioritization mode. Users provide the normal OnSSET inputs together with gridded climate data and an administrative-boundary shapefile. Climate data may come from sources such as Copernicus/ERA5 or other gridded climate datasets, provided the data are converted to tabular CSV format before being passed to the model.
 
 The climate loader classifies input files using filename hints that indicate temporal resolution and variable type. For example, daily temperature files can be used for heatwave calculations, while monthly precipitation files can be used for SPI-based drought calculations. The files must contain geographic coordinates and either a date field or year/month fields, together with the relevant temperature or precipitation variable. The administrative-boundary shapefile, recommended at admin-3 level, is used to aggregate gridded climate indicators to administrative units and then map the resulting hazard scores to settlements.
 
