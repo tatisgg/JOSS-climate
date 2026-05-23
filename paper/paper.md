@@ -11,7 +11,7 @@ authors:
   - name: Pedro Crespo del Granado
     orcid: 0000-0001-6048-8376
     affiliation: 1
-  - name: Tatiana Gonzalez Grandon
+  - name: Tatiana González Grandón
     orcid: 0000-0001-6587-0144
     affiliation: 1
   - name: Jens Eggen Skaug
