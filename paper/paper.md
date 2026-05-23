@@ -101,6 +101,6 @@ Generative AI tools were used during the preparation of this submission. ChatGPT
 
 # Acknowledgements
 
-This software is a fork of the Open Source Spatial Electrification Tool (OnSSET), originally developed by the OnSSET community and KTH Royal Institute of Technology. The authors thank the upstream OnSSET developers and contributors for making the original tool openly available. The authors also acknowledge the supervisor contributions of Tatiana Gonzalez Grandon and Pedro Crespo del Granado in guiding the development and research framing of the climate extension.
+This software is a fork of the Open Source Spatial Electrification Tool (OnSSET), originally developed by the OnSSET community and KTH Royal Institute of Technology. The authors thank the upstream OnSSET developers and contributors for making the original tool openly available. The authors also acknowledge the supervisor contributions of Dr. Tatiana González Grandón and Prof. Pedro Crespo del Granado in guiding the development and research framing of the climate extension.
 
 # References
